@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="top">
+             <h1 class="top__form-header text">Решим это по взрослому</h1>
+    </div>
+    <script>
+        window.application = {
+        blocks: {},
+        screens: {},
+        renderScreen: function(screenName) {
+            window.application.timers.forEach(id => {
+                clearInterval(id);   
+            });
+
+            if (window.application.screens[screenName]) {
+                window.application.screens[screenName]();
+            } else {
+                console.warn(`Экрана "${screenName}" не существует`);
+            }
+            
+        },
+        renderBlock: function(blockName, container) {
+            if (window.application.blocks[blockName]) {
+                window.application.blocks[blockName](container);
+            } else {
+                console.warn(`Блока "${blockName}" не существует`);
+            }
+        },
+        timers: []
+        }
+    </script>
+    <script src="./libs/request.js"></script>
+    <script src="/start.js"></script>
+    <script src="/lobby.js"></script>
+    <script src="/gameWaiting.js"></script>
+    <script src="/game.js"></script>
+    <script src="/waiting.js"></script>
+    <script src="/lose.js"></script>
+    <script src="/win.js"></script>
+</body>
+</html>
